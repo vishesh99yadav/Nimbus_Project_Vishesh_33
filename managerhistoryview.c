@@ -5,7 +5,7 @@
 // Purpose : Display history of fulfilled orders with customer name and remaining stock
 // -----------------------------------------------------------
 void manager_history_view() {
-    print("\n=== Manager: Order History Log ===\n");
+    printF("\n=== Manager: Order History Log ===\n");
     
     if (history_count == 0) {
         printf("No successful orders have been recorded yet.\n");
