@@ -2,6 +2,7 @@
 
 ---
 
+
 <h3>👥 Developed By:</h3>
 <div>
   <ul>
@@ -106,7 +107,8 @@
     <li>Final remaining inventory</li>
   </ul>
 </div>
-
+<h2> Output </h2>
+<img width="1336" height="3240" alt="output" src="https://github.com/user-attachments/assets/3e4a17c9-99f8-4cef-a9bb-c6a3d3c5c595" />
 <br>
 
 <h2>💡 Conclusion</h2>
@@ -129,4 +131,4 @@
   </ul>
 
   Overall, this project builds a strong base for more advanced disaster relief systems, warehouse automation platforms, and real-time emergency logistics solutions.
-</div>
+</div>  
