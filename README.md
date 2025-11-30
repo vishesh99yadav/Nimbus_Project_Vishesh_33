@@ -1,4 +1,23 @@
-This project, developed by Mayank Awasthi, along with team members Vishesh Yadav, Prabudh Saxena, Spring, and Shatakshi Vishnoi, is a structured Inventory and Order Management System built using the C programming language. The primary objective of the system is to provide a simple yet effective way to store, manage, and distribute items while ensuring accuracy and clarity in stock handling.
+------------------------------ PROJECT NUMBER # 33 -----------------------------------------------------------
+------------------------------ Disaster Relief Resource Allocation Planner -----------------------------------
+
+This project is  developed by 
+* Mayank Awasthi, 
+* Vishesh Yadav 
+* Prabudh Saxena Spring
+* Shatakshi Vishnoi.
+
+
+  =>   It is a structured Inventory and Order Management System built using the C programming language. The primary objective of the system is:-
+
+	* A simple and efficient Inventory and Order Management System developed in the C programming language.
+
+  * Designed to help manage product stock, handle customer orders, and maintain transaction history.
+
+  * Uses structures, arrays, and modular functions to organize data and operations.
+
+  * The system supports adding new stock items, viewing inventory, placing multi-item orders, and generating summary reports.
+
 
 The program maintains a list of items, each defined by a unique ID, product name, and available quantity. Managers can add new items to the inventory, view the updated list, and monitor stock levels. Users, on the other hand, can check the available items and place multi-item orders based on their requirements. When an order is placed, the system automatically verifies item availability, deducts the required quantity from stock, and updates the inventory in real time.
 
