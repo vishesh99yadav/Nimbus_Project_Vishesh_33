@@ -6,4 +6,4 @@
 // Function to display history of fulfilled orders
 void manager_history_view();
 
-#endif // MANAGERHISTORYVIEW_
+#endif // MANAGERHISTORYVIEW_H
