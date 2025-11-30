@@ -15,7 +15,7 @@ void query_menu() {
     }
 
     printf("1. View All Items\n");
-    printf("2. **Place a Multi-Item Order Reqt**\n");
+    printf("2. **Place a Multi-Item Order Request**\n");
     printf("Choose an option: ");
 
     if (scanf("%d", &option) != 1) {
