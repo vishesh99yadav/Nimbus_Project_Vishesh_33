@@ -109,7 +109,7 @@
 
 <br>
 
-<<h2>💡 Conclusion</h2>
+<h2>💡 Conclusion</h2>
 
 <div>
   This project demonstrates the real-world use of essential programming and problem-solving concepts that strengthen its capability as a disaster management and logistics planning tool.
