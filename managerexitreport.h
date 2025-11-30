@@ -6,4 +6,4 @@
 // Function to print the final inventory and sales report
 void manager_exit_report();
 
-#end
+#endif // MANAGEREXITREPORT_H
