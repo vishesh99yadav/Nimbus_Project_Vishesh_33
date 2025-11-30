@@ -7,7 +7,7 @@
   <ul>
     <li><b>Mayank Awasthi</b></li>
     <li><b>Vishesh Yadav</b></li>
-    <li><b>Prabudh Saxena (Spring)</b></li>
+    <li><b>Prabudh Saxena Spring</b></li>
     <li><b>Shatakshi Vishnoi</b></li>
   </ul>
 </div>
