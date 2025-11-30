@@ -109,17 +109,24 @@
 
 <br>
 
-<h2>💡 Conclusion</h2>
+<<h2>💡 Conclusion</h2>
 
 <div>
-  This project demonstrates the real-world use of:
+  This project demonstrates the real-world use of essential programming and problem-solving concepts that strengthen its capability as a disaster management and logistics planning tool.
+  
   <ul>
-    <li>Data management</li>
-    <li>Structured programming</li>
-    <li>Modular design principles</li>
+    <li><b>Data management</b> – Efficient handling of inventory, orders, and stock updates.</li>
+    <li><b>Structured programming</b> – Clear logical flow using well-defined modules.</li>
+    <li><b>Modular design principles</b> – Separation of features into multiple C files for better maintainability.</li>
+    <li><b>Problem solving</b> – Translating disaster relief challenges into implementable code logic.</li>
+    <li><b>Decision making</b> – Choosing optimal allocations and updating stock based on user input.</li>
+    <li><b>Arrays</b> – Managing lists of items, orders, and history records effectively.</li>
+    <li><b>Functions</b> – Reusable blocks for inventory operations, order validation, and reporting.</li>
+    <li><b>Structures</b> – Organized grouping of related data like item details and order entries.</li>
+    <li><b>Pointers</b> – Efficient data referencing and dynamic updates across modules.</li>
+    <li><b>Dynamic memory</b> – Flexible allocation when handling variable inventory or order sizes.</li>
+    <li><b>Simple heuristic optimization</b> – Prioritizing stock allocation and order fulfilment in a practical way.</li>
   </ul>
-  It provides a strong foundation for advanced disaster management tools, warehouse systems, or 
-  emergency logistics solutions.
-</div>
 
-<br>
+  Overall, this project builds a strong base for more advanced disaster relief systems, warehouse automation platforms, and real-time emergency logistics solutions.
+</div>
