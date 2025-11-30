@@ -1,28 +1,125 @@
------------------------------- PROJECT NUMBER # 33 -----------------------------------------------------------
------------------------------- Disaster Relief Resource Allocation Planner -----------------------------------
+<h1 align="center">🚨 Project 33 – Disaster Relief Resource Allocation Planner</h1>
 
-This project is  developed by 
-* Mayank Awasthi, 
-* Vishesh Yadav 
-* Prabudh Saxena Spring
-* Shatakshi Vishnoi.
+---
 
+<h3>👥 Developed By:</h3>
+<div>
+  <ul>
+    <li><b>Mayank Awasthi</b></li>
+    <li><b>Vishesh Yadav</b></li>
+    <li><b>Prabudh Saxena (Spring)</b></li>
+    <li><b>Shatakshi Vishnoi</b></li>
+  </ul>
+</div>
 
-  =>   It is a structured Inventory and Order Management System built using the C programming language. The primary objective of the system is:-
+<br>
 
-	* A simple and efficient Inventory and Order Management System developed in the C programming language.
+<h2>📌 Project Overview</h2>
 
-  * Designed to help manage product stock, handle customer orders, and maintain transaction history.
+<div>
+  This project is a fully structured <b>Inventory and Order Management System</b> built using the 
+  <b>C programming language</b>. It is specifically designed for efficient distribution of relief 
+  supplies during disaster scenarios. The system enables managers and field workers to handle 
+  stock, manage orders, and maintain accurate records with ease.
+</div>
 
-  * Uses structures, arrays, and modular functions to organize data and operations.
+<br>
 
-  * The system supports adding new stock items, viewing inventory, placing multi-item orders, and generating summary reports.
+<h2>🎯 Key Objectives</h2>
 
+<div>
+  <ul>
+    <li>A simple and efficient system to manage product stock and customer/relief requests.</li>
+    <li>Maintain a clean history of all issued items and completed orders.</li>
+    <li>Use structures, arrays, and modular programming concepts for clean code organization.</li>
+    <li>Support adding new stock, viewing inventory, placing multi-item orders, and generating reports.</li>
+  </ul>
+</div>
 
-The program maintains a list of items, each defined by a unique ID, product name, and available quantity. Managers can add new items to the inventory, view the updated list, and monitor stock levels. Users, on the other hand, can check the available items and place multi-item orders based on their requirements. When an order is placed, the system automatically verifies item availability, deducts the required quantity from stock, and updates the inventory in real time.
+<br>
 
-A major strength of this project is its structured and modular approach. By dividing the source code into multiple modules and header files, the system becomes easier to understand, maintain, and scale. Each module handles a specific functionality such as inventory operations, order processing, user interactions, and report generation. This improves readability and helps avoid code duplication.
+<h2>📦 System Functionality</h2>
 
-The system also records each successful order, storing details such as the customer name, ordered items, and the allocated quantities. This order history allows managers to track past transactions and understand patterns in stock usage. Upon exiting, the program generates a final report summarizing total orders fulfilled, total units dispatched, and the remaining stock for each item, offering a complete overview of system activity.
+<div>
+  The system maintains a complete list of items where each item holds:
+  <ul>
+    <li>Unique Item ID</li>
+    <li>Product Name</li>
+    <li>Available Quantity</li>
+  </ul>
 
-Overall, the project demonstrates practical implementation of data handling, structured programming, and modular design in C. It offers a reliable solution for basic inventory control and serves as a strong foundation for more advanced management systems.
+  Managers can:
+  <ul>
+    <li>Add new items to the inventory</li>
+    <li>Monitor and update stock levels</li>
+    <li>View order history</li>
+  </ul>
+
+  Users can:
+  <ul>
+    <li>View available stock</li>
+    <li>Place multi-item orders (max 3 at once)</li>
+    <li>Receive real-time stock updates after each order</li>
+  </ul>
+</div>
+
+<br>
+
+<h2>🧩 Modular Architecture</h2>
+
+<div>
+  One of the major strengths of this project is its <b>modular code structure</b>.  
+  The program is divided into multiple files, such as:
+  <ul>
+    <li><code>inventory.c</code> – Manages stock operations</li>
+    <li><code>orders.c</code> – Handles order placement and validation</li>
+    <li><code>utils.c</code> – Contains common helper functions</li>
+    <li><code>main.c</code> – Main driver of the application</li>
+  </ul>
+
+  This modularity:
+  <ul>
+    <li>Improves readability</li>
+    <li>Makes the project easier to maintain</li>
+    <li>Reduces code duplication</li>
+    <li>Makes it suitable for GitHub repositories and team collaboration</li>
+  </ul>
+</div>
+
+<br>
+
+<h2>📑 Order History & Reporting</h2>
+
+<div>
+  Every successful order stores:
+  <ul>
+    <li>Customer/Relief Worker Name</li>
+    <li>Items delivered</li>
+    <li>Quantities fulfilled</li>
+    <li>Remaining stock per item</li>
+  </ul>
+
+  At program exit, a complete report is generated showing:
+  <ul>
+    <li>Total orders processed</li>
+    <li>Total units distributed</li>
+    <li>Final remaining inventory</li>
+  </ul>
+</div>
+
+<br>
+
+<h2>💡 Conclusion</h2>
+
+<div>
+  This project demonstrates the real-world use of:
+  <ul>
+    <li>Data management</li>
+    <li>Structured programming</li>
+    <li>Modular design principles</li>
+  </ul>
+  It provides a strong foundation for advanced disaster management tools, warehouse systems, or 
+  emergency logistics solutions.
+</div>
+
+<br>
