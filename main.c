@@ -54,7 +54,7 @@ int get_remaining_stock(int item_id) {
             return inventory[i].qty;
         }
     }
-    return 0; // Return 0 if item is not found (or potentially deleted)
+    return 0; // Return 0 if item is not found
 }
 
 // -----------------------------------------------------------
@@ -101,7 +101,7 @@ void add_items() {
 }
 
 // -----------------------------------------------------------
-// Function: show_item_by_id() (Retained for internal/manager use)
+// Function: show_item_by_id() 
 // Purpose : Display details of a specific ID
 // -----------------------------------------------------------
 void show_item_by_id(int id) {
@@ -141,10 +141,9 @@ void display_all_inventory(void) {
     printf("-------------------------------------------\n");
 }
 
-
 // -----------------------------------------------------------
 // Function: process_request()
-// Purpose : Handle multi-item order request, check stock, reduce quantity, and record customer name
+// Purpose : Handle multi-item order request, reduce stock, record name
 // -----------------------------------------------------------
 void process_request() {
     int item_id, requested_qty;
@@ -162,12 +161,12 @@ void process_request() {
         return;
     }
 
-    // Get customer name
-    printf("Enter your name (e.g., Param): ");
+    // UPDATED: Removed "example: Param"
+    printf("Enter your name: ");
     scanf("%49s", current_order.customer_name);
     while (getchar() != '\n'); 
 
-    display_all_inventory(); // Show available items FIRST so the user knows the IDs!
+    display_all_inventory();
 
     printf("\nHow many DIFFERENT types of items do you need (Max 3)? ");
     if (scanf("%d", &num_items_to_order) != 1 || num_items_to_order <= 0 || num_items_to_order > 3) {
@@ -177,19 +176,17 @@ void process_request() {
     }
     while (getchar() != '\n'); 
 
-    // Loop through each item the user wants to order
     for (int i = 0; i < num_items_to_order; i++) {
         index = -1;
         printf("\n--- Item %d of %d ---\n", i + 1, num_items_to_order);
 
         printf("Enter Item ID (from list above): ");
         if (scanf("%d", &item_id) != 1) {
-            printf("Invalid ID format. Skipping this item.\n");
+            printf("Invalid ID. Skipping.\n");
             while (getchar() != '\n');
             continue;
         }
 
-        // Find the item index
         for (int j = 0; j < total_items; j++) {
             if (inventory[j].id == item_id) {
                 index = j;
@@ -198,64 +195,60 @@ void process_request() {
         }
 
         if (index == -1) {
-            printf("❌ Item ID %d not found. Skipping this item.\n", item_id);
+            printf("❌ Item ID %d not found.\n", item_id);
             continue;
         }
 
-        printf("Enter quantity for '%s' (Available: %d): ", inventory[index].name, inventory[index].qty);
+        printf("Enter quantity for '%s' (Available: %d): ", 
+               inventory[index].name, inventory[index].qty);
+
         if (scanf("%d", &requested_qty) != 1 || requested_qty <= 0) {
-            printf("Invalid quantity. Skipping this item.\n");
+            printf("Invalid quantity.\n");
             continue;
         }
 
-        // Check stock and fulfill
         if (requested_qty <= inventory[index].qty) {
-            // SUCCESS: Reduce stock and record details
             inventory[index].qty -= requested_qty;
-            
-            // Record to temporary OrderRecord (Saving ID, Name, and Quantity)
+
             current_order.item_ids[items_fulfilled] = item_id;
             strcpy(current_order.item_names[items_fulfilled], inventory[index].name);
             current_order.quantities[items_fulfilled] = requested_qty;
-            
+
             total_qty_for_order += requested_qty;
             items_fulfilled++;
-            
-            printf("   -> ✅ %d units of %s fulfilled. Remaining: %d\n", requested_qty, inventory[index].name, inventory[index].qty);
+
+            printf("   -> ✅ %d units of %s fulfilled. Remaining: %d\n",
+                   requested_qty, inventory[index].name, inventory[index].qty);
 
         } else {
-            // FAILURE: Insufficient stock
-            printf("   -> ⚠️ Insufficient stock! Only %d units available. Item NOT added to order.\n", inventory[index].qty);
+            printf("   -> ⚠️ Insufficient stock.\n");
         }
         while (getchar() != '\n');
     }
 
-    // Finalize the transaction
     if (items_fulfilled > 0) {
-        // Update global counters and save history
         total_orders_made++;
         total_quantity_fulfilled += total_qty_for_order;
         
         current_order.items_in_order = items_fulfilled;
-        
+
         if (history_count < MAX_ORDERS) {
             order_history[history_count++] = current_order;
-        } else {
-            printf("\n⚠️ Order History full. Current order not saved to log.\n");
         }
+
         next_order_id++;
 
-        printf("\n⭐ ORDER #%d COMPLETED for %s! Total %d units shipped. ⭐\n", 
+        printf("\n⭐ ORDER #%d COMPLETED for %s! Total %d units shipped. ⭐\n",
                current_order.order_id, current_order.customer_name, total_qty_for_order);
+
     } else {
-        printf("\n❌ Order Cancelled: No items could be fulfilled (or none requested).\n");
+        printf("\n❌ Order Cancelled: Nothing fulfilled.\n");
     }
 }
 
-
 // -----------------------------------------------------------
 // Function: query_menu()
-// Purpose : Lets users check available stock and place order (REMOVED ID SEARCH)
+// Purpose : Lets users check available stock and place order
 // -----------------------------------------------------------
 void query_menu() {
     int option;
@@ -263,12 +256,12 @@ void query_menu() {
     printf("\n=== User: Stock Query & Order Menu ===\n");
 
     if (total_items == 0) {
-        printf("Inventory empty. Nothing to display or order.\n");
+        printf("Inventory empty.\n");
         return;
     }
 
     printf("1. View All Items\n");
-    printf("2. **Place a Multi-Item Order Request**\n"); // Ordering inherently requires viewing the list first
+    printf("2. Place a Multi-Item Order\n");
     printf("Choose an option: ");
 
     if (scanf("%d", &option) != 1) {
@@ -281,13 +274,11 @@ void query_menu() {
         case 1:
             display_all_inventory();
             break;
-            
         case 2:
             process_request();
             break;
-
         default:
-            printf("Unknown option. Please choose 1 or 2.\n");
+            printf("Unknown option.\n");
     }
 
     while (getchar() != '\n');
@@ -295,13 +286,13 @@ void query_menu() {
 
 // -----------------------------------------------------------
 // Function: manager_history_view()
-// Purpose : Display history of fulfilled orders with customer name and remaining stock
+// Purpose : Display history of fulfilled orders
 // -----------------------------------------------------------
 void manager_history_view() {
     printf("\n=== Manager: Order History Log ===\n");
     
     if (history_count == 0) {
-        printf("No successful orders have been recorded yet.\n");
+        printf("No successful orders yet.\n");
         return;
     }
 
@@ -310,27 +301,26 @@ void manager_history_view() {
 
     for (int i = 0; i < history_count; i++) {
         printf("ORDER ID: %d | Customer: %s (Items: %d)\n", 
-               order_history[i].order_id, order_history[i].customer_name, order_history[i].items_in_order);
-        printf("  Fulfillment Details:\n");
+               order_history[i].order_id, 
+               order_history[i].customer_name,
+               order_history[i].items_in_order);
+
         for (int j = 0; j < order_history[i].items_in_order; j++) {
             int remaining_qty = get_remaining_stock(order_history[i].item_ids[j]);
-            
-            // Display Allocated Qty AND Remaining Stock
-            printf("  -> %s (ID %d): Allocated %d | **Stock Left: %d**\n", 
-                   order_history[i].item_names[j], 
-                   order_history[i].item_ids[j], 
+            printf("  -> %s (ID %d): Allocated %d | Stock Left: %d\n",
+                   order_history[i].item_names[j],
+                   order_history[i].item_ids[j],
                    order_history[i].quantities[j],
-                   remaining_qty
-            );
+                   remaining_qty);
         }
+
         printf("------------------------------------------\n");
     }
 }
 
-
 // -----------------------------------------------------------
 // Function: manager_exit_report()
-// Purpose : Prints final inventory, sales, and emotional closing
+// Purpose : Prints final inventory, sales, and message
 // -----------------------------------------------------------
 void manager_exit_report() {
     int total_remaining_qty = 0;
@@ -339,38 +329,32 @@ void manager_exit_report() {
     printf("📦 FINAL MANAGER & DISASTER RELIEF REPORT 📦\n");
     printf("============================================\n");
 
-    // 1. Order Summary
-    printf("## Sales/Fulfillment Summary\n");
+    printf("## Summary\n");
     printf("-------------------------------------------\n");
-    printf("Total Successful Orders Registered: %d\n", total_orders_made);
+    printf("Total Successful Orders: %d\n", total_orders_made);
     printf("Total Quantity Fulfilled: %d units\n", total_quantity_fulfilled);
     printf("-------------------------------------------\n");
 
-    // 2. Remaining Stock
     printf("\n## Remaining Inventory\n");
     printf("-------------------------------------------\n");
-    printf("| ID   | Name              | Quantity Left|\n");
+    printf("| ID   | Name              | Quantity Left |\n");
     printf("-------------------------------------------\n");
+
     for (int i = 0; i < total_items; i++) {
-        printf("| %-4d | %-17s | %-12d |\n",
+        printf("| %-4d | %-17s | %-13d |\n",
             inventory[i].id,
             inventory[i].name,
             inventory[i].qty
         );
         total_remaining_qty += inventory[i].qty;
     }
-    printf("-------------------------------------------\n");
-    printf("Total remaining units across all items: %d\n", total_remaining_qty);
 
-    // 3. Emotional Connection
-    printf("\n### A Message to Our Relief Partners\n");
-    printf("> We recognize the weight of the tasks you face every day. \n");
-    printf("> Every item requested, every order fulfilled, represents a life touched, a community supported. \n");
-    printf("> Thank you for choosing us to be a small part of your massive effort. \n");
-    printf("> Your dedication is the true inventory of hope. Keep up the essential work!\n");
+    printf("-------------------------------------------\n");
+    printf("Total Remaining Units: %d\n", total_remaining_qty);
+
+    printf("\nThank you for supporting disaster relief operations.\n");
     printf("============================================\n");
 }
-
 
 // -----------------------------------------------------------
 // Main Driver
@@ -394,7 +378,6 @@ int main() {
 
         while (getchar() != '\n');
         
-        // Manager Sub-Menu
         if (choice == 1) {
             int manager_choice;
             printf("\n--- Manager Menu ---\n");
@@ -403,7 +386,7 @@ int main() {
             printf("Enter manager choice: ");
             
             if (scanf("%d", &manager_choice) != 1) {
-                printf("Invalid input. Returning to main menu.\n");
+                printf("Invalid input.\n");
                 while (getchar() != '\n');
                 continue;
             }
@@ -414,13 +397,11 @@ int main() {
                 case 2: manager_history_view(); break;
                 default: printf("Invalid manager choice.\n");
             }
-        } else {
-            // Main Menu Options
+        } 
+        else {
             switch (choice) {
                 case 2: query_menu(); break;
-                case 3: 
-                    manager_exit_report(); 
-                    break;
+                case 3: manager_exit_report(); break;
                 default: printf("Invalid choice.\n");
             }
         }
