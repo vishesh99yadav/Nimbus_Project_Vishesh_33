@@ -1,6 +1,6 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
 
 #define MAX_ITEMS 100
 #define MAX_ORDERS 50
@@ -58,8 +58,8 @@ int get_remaining_stock(int item_id) {
 }
 
 // -----------------------------------------------------------
-// Function: add_items()
-// Purpose : Allows manager to enter stock details
+// Function:add_items()
+// Purpose :Allows manager to enter stock details
 // -----------------------------------------------------------
 void add_items() {
     int count;
